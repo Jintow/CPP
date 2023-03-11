@@ -21,12 +21,12 @@ public:
 	HumanB(std::string name);
 	~HumanB();
 
-	void	setWeapon(Weapon *weapon);
-	void	attack()const;
+	void	setWeapon(Weapon &weapon);
+	void	attack();
 
 private:
 	std::string	_name;
-	Weapon		_weapon;
+	Weapon		*_weapon;
 
 };
 

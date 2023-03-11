@@ -3,7 +3,7 @@
 #########################
 
 # Folders and names
-NAME			:=	zombie
+NAME			:=	hibrain
 
 HEADERS_DIR		:= .
 HEADERS_FILES	:=

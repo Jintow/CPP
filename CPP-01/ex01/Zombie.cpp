@@ -13,7 +13,7 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie(){
-	std::cout << "constructor called" << std::endl;
+	std::cout << "A zombie is going out of the mud" << std::endl;
 }
 
 Zombie::Zombie(std::string name):_name(name){}
