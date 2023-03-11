@@ -41,6 +41,7 @@ class Harl {
 		~Harl();
 
 		void	complain(std::string level);
+		void	filter(std::string filter);
 
 	private:
 		void 	_debug( void );

@@ -41,7 +41,7 @@ std::cout << CYAN << "I would love to have a functionnal intranet on 42 school" 
 void	Harl::_warning()
 {
 	std::cout << PURPLE_B << "[WARNING]" << DEFAULT << std::endl;
-	std::cout << PURPLE << "These incomprehensibles sessions shutdowns are really driving me crazy" << std::endl;
+	std::cout << PURPLE << "These incomprehensible sessions shutdowns are really driving me crazy" << std::endl;
 }
 
 void	Harl::_error()
@@ -58,6 +58,26 @@ void	Harl::complain(std::string level)
 			(this->*_ptr_level[i])();
 			break ;
 		}
+	}
+}
+
+void	Harl::filter(std::string filter)
+{
+	int i = 0;
+
+	for (i = 0; i < 4 ; i++) {
+		if (_levels[i] == filter)
+			break ;
+	}
+	if (i == 4)
+	{
+		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
+		return ;
+	}
+	while (i < 4)
+	{
+		(this->*_ptr_level[i])();
+		i++;
 	}
 }
 
