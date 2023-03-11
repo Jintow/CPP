@@ -3,7 +3,7 @@
 #########################
 
 # Folders and names
-NAME			:=	Harl
+NAME			:=	HarlFilter
 
 HEADERS_DIR		:= .
 HEADERS_FILES	:= Harl.hpp

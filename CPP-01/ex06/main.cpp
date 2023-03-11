@@ -19,9 +19,21 @@ int	main(int argc, char **argv)
 	Harl harl;
 
 	if (argc != 2)
-		harl.filter("error");
-	else
-		harl.filter(argv[1]);
+		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
+	else {
+		int level = harl.filter(argv[1]);
+		switch (level)
+		{
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+				harl.complain(level);
+				break ;
+			default:
+				std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
+		}
+	}
 
 	return (0);
 }

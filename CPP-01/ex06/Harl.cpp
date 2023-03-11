@@ -29,39 +29,38 @@ Harl::~Harl(){}
 void	Harl::_debug()
 {
 	std::cout << GREEN_B << "[DEBUG]" << DEFAULT << std::endl;
-	std::cout << GREEN << "I miss the Warcraft tournament party in the cluster" << std::endl;
+	std::cout << GREEN << "I miss the Warcraft tournament party in the cluster" << END << std::endl;
 }
 
 void	Harl::_info()
 {
 	std::cout << CYAN_B << "[INFO]" << DEFAULT << std::endl;
-std::cout << CYAN << "I would love to have a functionnal intranet on 42 school" << std::endl;
+std::cout << CYAN << "I would love to have a functionnal intranet on 42 school" << END << std::endl;
 }
 
 void	Harl::_warning()
 {
 	std::cout << PURPLE_B << "[WARNING]" << DEFAULT << std::endl;
-	std::cout << PURPLE << "These incomprehensible sessions shutdowns are really driving me crazy" << std::endl;
+	std::cout << PURPLE << "These incomprehensible sessions shutdowns are really driving me crazy" << END << std::endl;
 }
 
 void	Harl::_error()
 {
 	std::cout << RED_B << "[ERROR]" << DEFAULT << std::endl;
-	std::cout << RED << "I think i gonna kill the responsible of these god damned freezes" << std::endl;
+	std::cout << RED << "I think i gonna kill the responsible of these god damned freezes" << END << std::endl;
 }
 
-void	Harl::complain(std::string level)
+void	Harl::complain(int level)
 {
 	for (int i = 0; i < 4; i++) {
-		if (this->_levels[i] == level)
+		if (i >= level)
 		{
 			(this->*_ptr_level[i])();
-			break ;
 		}
 	}
 }
 
-void	Harl::filter(std::string filter)
+int	Harl::filter(std::string filter)
 {
 	int i = 0;
 
@@ -69,15 +68,6 @@ void	Harl::filter(std::string filter)
 		if (_levels[i] == filter)
 			break ;
 	}
-	if (i == 4)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
-		return ;
-	}
-	while (i < 4)
-	{
-		(this->*_ptr_level[i])();
-		i++;
-	}
+	return (i);
 }
 

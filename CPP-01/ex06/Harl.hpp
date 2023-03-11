@@ -40,15 +40,15 @@ class Harl {
 		Harl();
 		~Harl();
 
-		void	complain(std::string level);
-		void	filter(std::string filter);
+		void	complain(int level);
+		int		filter(std::string filter);
 
 	private:
-		void 	_debug( void );
-		void 	_info( void );
-		void 	_warning( void );
-		void 	_error( void );
-		void	(Harl::*_ptr_level[4])(void);
+		void 		_debug( void );
+		void 		_info( void );
+		void 		_warning( void );
+		void 		_error( void );
+		void		(Harl::*_ptr_level[4])(void);
 		std::string	_levels[4];
 
 };
