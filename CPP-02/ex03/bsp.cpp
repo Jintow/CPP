@@ -19,7 +19,7 @@ bool	isInsideTriangle(Point a, Point b, Point c, Point toStudy)
 	Fixed	area2 = triangleArea(toStudy, b, c);
 	Fixed	area3 = triangleArea(toStudy, d, a);
 
-	if (area1 + area2 + area3 - triangleArea(a, b ,c) <= Fixed(0.000001f))
+	if (area1 + area2 + area3 - triangleArea(a, b ,c) <= Fixed(1))
 		return (true);
 	return (false);
 

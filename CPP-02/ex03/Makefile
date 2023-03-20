@@ -6,12 +6,12 @@
 NAME			:=	BSP
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	Fixed.hpp
+HEADERS_FILES	:=	Fixed.hpp Point.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp Fixed.cpp
+SRC_FILES		:=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)

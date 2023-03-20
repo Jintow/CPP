@@ -12,10 +12,10 @@ Point::Point(const float x, const float y): _x(x), _y(y)
 
 Point::~Point() {}
 
-Point::Point(const Point point):_x(point.getX()), _y(point.getY())
+Point::Point(Point const &point):_x(point.getX()), _y(point.getY())
 {}
 
-Point &Point::operator=(const Point &point)
+Point &Point::operator=(Point const &point)
 {
 	this->_x = point.getX();
 	this->_y = point.getY();

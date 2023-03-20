@@ -11,23 +11,18 @@
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include "Point.hpp"
+
+bool	isInsideTriangle(Point a, Point b, Point c, Point toStudy);
 
 std::ostream & operator<<(std::ostream & out, Fixed const & number);
 
 int main( void )
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Point s1(1.0f, 1.0f);
+	Point s2;
+	Point s3(0.0f, 2.0f);
+	Point	toStudy(0.5f, 0.3f);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-
-	std::cout << b << std::endl;
-
-	std::cout << Fixed::max( a, b ) << std::endl;
-
-	return 0;
+	std::cout << isInsideTriangle(s1, s2, s3, toStudy) << std::endl;
 }
