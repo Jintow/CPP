@@ -17,17 +17,17 @@ Point::Point(Point const &point):_x(point.getX()), _y(point.getY())
 
 Point &Point::operator=(Point const &point)
 {
-	this->_x = point.getX();
-	this->_y = point.getY();
+	(Fixed) this->_x = point.getX();
+	(Fixed) this->_y = point.getY();
 	return (*this);
 }
 
-Fixed &Point::getX() const
+Fixed Point::getX() const
 {
 	return (this->_x);
 }
 
-Fixed &Point::getY() const
+Fixed Point::getY() const
 {
 	return (this->_y);
 }

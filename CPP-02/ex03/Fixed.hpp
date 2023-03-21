@@ -47,5 +47,7 @@ private:
 	static int const _rawBits;
 };
 
+std::ostream & operator<<(std::ostream & out, Fixed const & number);
+
 
 #endif //CPP_FIXED_HPP

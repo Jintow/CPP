@@ -16,8 +16,8 @@ public:
 	~Point();
 
 	Point	&operator=(Point const &point);
-	Fixed	&getX(void) const;
-	Fixed	&getY(void) const;
+	Fixed	getX(void) const;
+	Fixed	getY(void) const;
 
 
 private:
