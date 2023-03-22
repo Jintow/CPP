@@ -10,23 +10,23 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name):
 _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "ScavTrap " << BOLD << this->_name << END << " takes the mike" << std::endl;
+	std::cout << "ClapTrap " << BOLD << this->_name << END << " takes the mike" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &mC):_name(mC.getName())
 {
-	std::cout << "ScavTrap " << BOLD << this->_name << END << "is dopple-ganged" << std::endl;
+	std::cout << "ClapTrap " << BOLD << this->_name << END << "is dopple-ganged" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ScavTrap "  << BOLD << this->_name << END << " pass the mike" << std::endl;
+	std::cout << "ClapTrap "  << BOLD << this->_name << END << " pass the mike" << std::endl;
 }
 
 /*
@@ -75,12 +75,12 @@ void ClapTrap::attack(const std::string &target)
 		return ;
 	if (this->_energyPoints < 1)
 	{
-		std::cout << "ScavTrap " << BOLD << this->_name << END;
+		std::cout << "ClapTrap " << BOLD << this->_name << END;
 		std::cout << " is out of inspiration" << std::endl;
 		return ;
 	}
 	this->_energyPoints--;
-	std::cout << "ScavTrap " << BOLD << this->_name << END;
+	std::cout << "ClapTrap " << BOLD << this->_name << END;
 	std::cout << " target " << BOLD << target << END;
 	std::cout << " and improvised " << PURPLE << this->_attackDamage << END << " min of incredible rap" << std::endl;
 }
@@ -89,12 +89,12 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints < 1)
 		return ;
-	std::cout << "ScavTrap " << BOLD << this->_name << END;
+	std::cout << "ClapTrap " << BOLD << this->_name << END;
 	std::cout << " wait " << RED << amount << END << " min and is scared" << std::endl;
 	this->_hitPoints -= amount;
 	if (this->_hitPoints < 1)
 	{
-		std::cout << "ScavTrap " << BOLD << this->_name << END;
+		std::cout << "ClapTrap " << BOLD << this->_name << END;
 		std::cout << " is beaten and goes out of the scene" << std::endl;
 		return ;
 	}
@@ -104,7 +104,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energyPoints <= 1)
 	{
-		std::cout << "ScavTrap " << BOLD << this->_name << END;
+		std::cout << "ClapTrap " << BOLD << this->_name << END;
 		std::cout << " is out of inspiration" << std::endl;
 		return ;
 	}
@@ -112,7 +112,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	this->_hitPoints += amount;
 	this->_energyPoints--;
-	std::cout << "ScavTrap " << BOLD << this->_name << END;
+	std::cout << "ClapTrap " << BOLD << this->_name << END;
 	std::cout << " dances to recover " << GREEN << amount << END << " min for improvising" << std::endl;
 }
 
