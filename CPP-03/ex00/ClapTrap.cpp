@@ -36,6 +36,9 @@ ClapTrap::~ClapTrap()
 ClapTrap &ClapTrap::operator=(ClapTrap const &mC)
 {
 	this->_name = mC.getName();
+	this->_hitPoints = mC.getHitPoint();
+	this->_energyPoints = mC.getEnergyPoint();
+	this->_attackDamage = mC.getAmount();
 	return (*this);
 }
 void	ClapTrap::setAttackDamage(const unsigned int flow)

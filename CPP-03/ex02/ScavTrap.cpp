@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:45:41 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/22 17:08:34 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:12:44 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ ScavTrap::ScavTrap(std::string name)
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
 	std::cout << "ScavTrap " << BOLD << this->_name << END << " takes the mike" << std::endl;
-}
-
-ScavTrap::ScavTrap(const ScavTrap &mC)
-{
-	this->_name = mC.getName();
-	this->_hitPoints = mC.getHitPoint();
-	this->_energyPoints = mC.getEnergyPoint();
-	this->_attackDamage = mC.getAmount();
-	std::cout << "ScavTrap " << BOLD << this->_name << END << "is dopple-ganged" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
