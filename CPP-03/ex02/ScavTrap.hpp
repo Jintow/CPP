@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:44:31 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/22 16:48:04 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:35:17 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	~ScavTrap();
 
 	void		guardGate();
+	void 		attack(const std::string& target);
 
 //protected:
 

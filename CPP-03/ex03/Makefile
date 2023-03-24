@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:=	PULLLUPPP
+NAME			:=	BigDiamond
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+HEADERS_FILES	:=	ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC_FILES		:=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
