@@ -10,6 +10,7 @@
 int main(void)
 {
 	{
+//		Animal	coucou;
 		Animal *animals[10];
 		for (int i = 0; i < 10; i++) {
 			if (i % 2) {

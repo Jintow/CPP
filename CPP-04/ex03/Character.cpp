@@ -4,10 +4,21 @@
 
 #include "Character.hpp"
 
-Character::Character() {}
+Character::Character(): _Name("Someone")
+{
+	for(int i = 0; i < 4; i++)
+	{
+		this->_Inventory[i] = NULL;
+	}
+}
 
 Character::Character(const std::string &Name): _Name(Name)
-{}
+{
+	for(int i = 0; i < 4; i++)
+	{
+		this->_Inventory[i] = NULL;
+	}
+}
 
 Character::Character(const Character &Character)
 {
@@ -36,16 +47,41 @@ Character	&Character::operator=(const Character &Character)
 		if (this->_Inventory[i] != NULL)
 			delete this->_Inventory[i];
 	}
-	this->_Inventory = Character.copyInventory();
+	for(int i = 0; i < 4; i++)
+	{
+		if (Character._Iventory[i] != NULL)
+			this->_Inventory[i] = Character._Inventory[i]->clone();
+		else
+			this->_Iventory[i] = NULL;
+	}
 	return (*this);
 }
 
-AMateria	**Character::copyInventory() const
+
+void Character::equip(AMateria *m)
 {
-	AMateria copy_inventory[4] = new AMateria[4]();
 	for(int i = 0; i < 4; i++)
 	{
-		copy_inventory[i] = this->Inventory[i]->clone();
+		if (this->_Inventory[i] == NULL)
+		{
+			this->_Inventory[i] = m;
+			return ;
+		}
 	}
-	return (*copy_inventory);
+}
+
+void Character::unequip(int idx)
+{
+	if (idx < 0 || idx >= 4)
+		return ;
+	if (this->_Inventory[idx] != NULL)
+		this->_Inventory[idx] = NULL;
+}
+
+void Character::use(int idx, ICharacter &target)
+{
+	if (idx < 0 || idx >= 4)
+		return ;
+	if (this->_Inventory[idx] != NULL)
+		this->_Inventory[idx]->use(target);
 }
