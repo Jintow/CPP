@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:42:05 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/29 16:50:50 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:40:41 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ public:
 	const std::string	&getName() const;
 	void 				equip(AMateria* m);
 	void				unequip(int idx);
+	void				groundFall(AMateria *felt);
 	void				use(int idx, ICharacter& target);
 
 private:
 	std::string _Name;
 	AMateria	*_Inventory[4];
+	AMateria	*_Ground[1000];
 
 };
 

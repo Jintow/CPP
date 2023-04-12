@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 10:54:07 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/12 11:27:25 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:49:52 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ MateriaSource::MateriaSource()
 
 MateriaSource::~MateriaSource()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->_materia[i] != NULL)
-			delete this->_materia[i];
-	}
+//	for (int i = 0; i < 4; i++)
+//	{
+//		if (this->_materia[i] != NULL)
+//			delete this->_materia[i];
+//	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src)
@@ -40,10 +40,11 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &src)
 		if (this->_materia[i] != NULL)
 			delete this->_materia[i];
 		if (src._materia[i] != NULL)
-			this->_materia[i] = src._materia[i].clone();
+			this->_materia[i] = src._materia[i]->clone();
 		else
 			this->_materia[i] = NULL;
 	}
+	return (*this);
 }
 
 void MateriaSource::learnMateria(AMateria *m)
@@ -51,7 +52,7 @@ void MateriaSource::learnMateria(AMateria *m)
 	for (int i = 0; i < 4; i++){
 		if (this->_materia[i] == NULL)
 		{
-			this->_materia = m;
+			this->_materia[i] = m;
 			return ;
 		}
 	}

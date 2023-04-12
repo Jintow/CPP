@@ -6,12 +6,12 @@
 NAME			:=	MyIncredibleInventory
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	AMateria.hpp ICharacter.hpp Character.hpp Ice.hpp Cure.hpp
+HEADERS_FILES	:=	AMateria.hpp ICharacter.hpp Character.hpp Ice.hpp Cure.hpp IMateriaSource.hpp MateriaSource.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	AMateria.cpp ICharacter.cpp Character.cpp Ice.cpp Cure.cpp
+SRC_FILES		:=	AMateria.cpp ICharacter.cpp Character.cpp Ice.cpp Cure.cpp MateriaSource.cpp main.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)

@@ -11,9 +11,7 @@ Ice::~Ice(){}
 
 Ice *Ice::clone() const
 {
-	Ice	*clone = new Ice();
-	*clone = *this;
-	return (clone);
+	return (new Ice());
 }
 
 void Ice::use(ICharacter &target)
