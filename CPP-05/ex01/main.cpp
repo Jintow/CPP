@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:51:55 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/12 17:07:44 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:40:28 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,19 @@ int	main(void)
 		std::cout << Kufandy << std::endl;
 		std::cout << Swimmer << std::endl;
 	}
-	try{
-
+	catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try {
+		Form constitution("Constitution", 1 , 50);
+		std::cout << constitution;
+		Bureaucrat president ("President", 1);
+		constitution.beSigned(president);
+		Form paper;
+		Form law("Retire law", 10, 80);
+		Form law2 = law;
+		Form law3("Impossible", 0, 151);
 	}
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;

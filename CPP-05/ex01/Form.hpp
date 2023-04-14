@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 16:25:57 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/14 11:29:01 by jlitaudo         ###   ########.fr       */
+/*   Created: 2023/04/12 17:13:47 by jlitaudo          #+#    #+#             */
+/*   Updated: 2023/04/14 10:57:05 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CPP_05_BUREAUCRAT_HPP
-#define CPP_05_BUREAUCRAT_HPP
+
+#ifndef CPP_05_FORM_HPP
+#define CPP_05_FORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
 
-class Bureaucrat {
+class Bureaucrat;
+
+class Form {
 
 public:
-	Bureaucrat();
-	Bureaucrat(std::string const &name, int grade);
-	Bureaucrat(Bureaucrat &Bureaucrat);
-	~Bureaucrat();
+	Form();
+	Form(std::string name, int signingGrade, int executionGrade);
+	Form(Form &Form);
+	~Form();
 
-	Bureaucrat &operator=(const Bureaucrat &Bureaucrat);
+	Form &operator=(const Form &Form);
+
 	std::string getName() const;
-	int 		getGrade() const;
-	void		promote();
-	void		demote();
+	int 		getSigningGrade() const;
+	int 		getExecutionGrade() const;
+	bool		isSigned() const;
+	void		beSigned(Bureaucrat &Bureaucrat);
 
 	class GradeTooHighException: public std::exception {
 	public:
@@ -40,9 +46,13 @@ public:
 
 private:
 	const std::string	_Name;
-	int 				_Grade;
+	const int 			_SigningGrade;
+	const int 			_ExecutionGrade;
+	bool				_IsSigned;
 
 };
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat);
 
-#endif //CPP_05_BUREAUCRAT_HPP
+std::ostream &operator<<(std::ostream &out, const Form &Form);
+
+
+#endif //CPP_05_FORM_HPP
