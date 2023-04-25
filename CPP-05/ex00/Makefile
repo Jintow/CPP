@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:=	Serena
+NAME			:=	Menagery
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=	ClapTrap.hpp ScavTrap.hpp
+HEADERS_FILES	:=
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC_FILES		:=	main.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
