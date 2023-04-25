@@ -1,10 +1,4 @@
 //
-<<<<<<< HEAD
-// Created by Johan Litaudon on 4/4/23.
-//
-
-#include "Bureaucrat.hpp"
-=======
 // Created by jlitaudo on 4/12/23.
 //
 
@@ -65,12 +59,20 @@ void Bureaucrat::demote()
 		this->_Grade++;
 }
 
+void Bureaucrat::signForm(Form &Form) const
+{
+	if (Form.isSigned() == true)
+		std::cout << this->_Name << " signed " << Form.getName() << std::endl;
+	else
+		std::cout << this->_Name << " couldn't signed " << Form.getName() << " because he doesn't have the grade to dot it." << std::endl;
+}
+
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade too high";
+	return ("Grade too high");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade too low";
+	return ("Grade too low");
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
@@ -78,4 +80,3 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
 	out << Bureaucrat.getName() << " is a Bureaucrat of grade " << Bureaucrat.getGrade();
 	return (out);
 }
->>>>>>> ba8a04fbc95c733a411163f4d55c31f9a57b5e1d

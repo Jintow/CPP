@@ -1,10 +1,4 @@
 //
-<<<<<<< HEAD
-// Created by Johan Litaudon on 4/4/23.
-//
-
-#include "Bureaucrat.hpp"
-=======
 // Created by jlitaudo on 4/12/23.
 //
 
@@ -52,7 +46,7 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::promote()
 {
 	if (this->_Grade - 1 < 1)
-		throw GradeTooHighException();
+		throw Exceptions::GradeTooHighException();
 	else
 		this->_Grade--;
 }
@@ -60,17 +54,28 @@ void Bureaucrat::promote()
 void Bureaucrat::demote()
 {
 	if (this->_Grade + 1 > 150)
-		throw GradeTooLowException();
+		throw Exceptions::GradeTooLowException();
 	else
 		this->_Grade++;
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade too high";
+void Bureaucrat::signForm(Form &Form) const
+{
+	if (Form.isSigned() == true)
+		std::cout << this->_Name << " signed " << Form.getName() << std::endl;
+	else
+		std::cout << this->_Name << " couldn't signed " << Form.getName() << " because he doesn't have the grade to dot it." << std::endl;
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade too low";
+void Bureaucrat::executeForm(const Form &form) const {
+	try {
+		form.execute(*this);
+		std::cout << this->getName() << " has executed " << form.getName() << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cerr << this->_Name << " couldn't execute " << form.getName() << " because: "
+				  << e.what() << std::endl;
+	}
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
@@ -78,4 +83,3 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
 	out << Bureaucrat.getName() << " is a Bureaucrat of grade " << Bureaucrat.getGrade();
 	return (out);
 }
->>>>>>> ba8a04fbc95c733a411163f4d55c31f9a57b5e1d
