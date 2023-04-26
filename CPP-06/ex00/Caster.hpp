@@ -27,6 +27,10 @@ private:
 	static bool checkDouble(std::string const & literal);
 
 	Caster();
+	~Caster();
+	Caster(Caster &caster);
+
+	Caster &operator=(Caster &caster);
 };
 
 
