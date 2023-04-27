@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:=	Caster
+NAME			:= template
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= Caster.hpp
+HEADERS_FILES	:= whatever.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	Caster.cpp main.cpp
+SRC_FILES		:=	main.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
