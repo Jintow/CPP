@@ -25,9 +25,6 @@ int	main(void)
 		std::cout << Kufandy << std::endl;
 		std::cout << Swimmer << std::endl;
 	}
-	try{
-
-	}
 	catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}

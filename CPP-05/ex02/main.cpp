@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:51:55 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/14 16:20:05 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:47:06 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	try {
 		Bureaucrat Kufandy("Kufandy", 0);
 		Bureaucrat Swimmer("Swimmer", 151);
-//		Kufandy.promote();
+
 		Kufandy.demote();
 		Swimmer.demote();
 		Swimmer.promote();
@@ -52,20 +52,5 @@ int	main(void)
 	for (int i=0; i < 4; i++)
 		Kufandy.executeForm(rbotzzle);
 	Kufandy.executeForm(forgive);
-//	try {
-//		Form constitution("Constitution", 1 , 50);
-//		std::cout << constitution;
-//		Bureaucrat president ("President", 1);
-//		constitution.beSigned(president);
-//		Form paper;
-//		Form law("Retire law", 10, 80);
-//		Form law2 = law;
-//		std::cout << law2;
-//		Form law3("Impossible", 0, 151);
-//	}
-//	catch (std::exception &e){
-//		std::cerr << e.what() << std::endl;
-//	}
-
 	return (0);
 }

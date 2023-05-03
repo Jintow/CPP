@@ -1,12 +1,14 @@
-//
-<<<<<<< HEAD
-// Created by Johan Litaudon on 4/4/23.
-//
-
-#include "Bureaucrat.hpp"
-=======
-// Created by jlitaudo on 4/12/23.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/03 10:18:10 by jlitaudo          #+#    #+#             */
+/*   Updated: 2023/05/03 10:18:10 by jlitaudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -78,4 +80,3 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &Bureaucrat)
 	out << Bureaucrat.getName() << " is a Bureaucrat of grade " << Bureaucrat.getGrade();
 	return (out);
 }
->>>>>>> ba8a04fbc95c733a411163f4d55c31f9a57b5e1d

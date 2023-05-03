@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:51:55 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/14 12:41:20 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:41:37 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ int	main(void)
 		std::cout << constitution;
 		Bureaucrat president ("President", 1);
 		constitution.beSigned(president);
+		std::cout << constitution;
+		std::cout << std::endl << " ============= " << std::endl << std::endl;
 		Form paper;
 		Form law("Retire law", 10, 80);
 		Form law2 = law;
 		std::cout << law2;
+		Bureaucrat tribun ("Parliamentor", 15);
+		law2.beSigned(tribun);
+		std::cout << std::endl << " ============= " << std::endl << std::endl;
 		Form law3("Impossible", 0, 151);
 	}
 	catch (std::exception &e){

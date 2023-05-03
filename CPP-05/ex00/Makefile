@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:=	Menagery
+NAME			:=	Bureaucracy
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:=
+HEADERS_FILES	:= Bureaucrat.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp
+SRC_FILES		:=	main.cpp Bureaucrat.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
