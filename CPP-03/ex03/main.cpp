@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:29:48 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/22 17:15:38 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:42:29 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 int	main(void)
 {
 	DiamondTrap joeyStar("Joey Star");
-	ScavTrap akhenaton("Akhenaton");
+	DiamondTrap akhenaton("Akhenaton");
 
+//	DiamondTrap test = joeyStar;
+//	DiamondTrap test2(akhenaton);
 	for (int i = 0; i < 4; i++)
 	{
 		joeyStar.attack(akhenaton.getName());

@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:41:08 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/24 10:49:00 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:22:31 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ public:
 	DiamondTrap(DiamondTrap const &mC);
 	~DiamondTrap();
 
+	DiamondTrap	&operator=(DiamondTrap const &mC);
+	std::string getName(void) const;
 	void whoAmI();
 
 private:

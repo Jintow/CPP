@@ -6,7 +6,7 @@
 /*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:41:16 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/03/24 10:54:51 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:43:06 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,23 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), ScavTrap(name), Frag
 
 DiamondTrap::~DiamondTrap(){
 	std::cout << "DiamondTrap: " << this->_name << " pass the mike" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &mC): ClapTrap(mC.getName()), ScavTrap(mC.getName()), FragTrap(mC.getName())
+{
+	this->_name = mC.getName();
+	ClapTrap::_name = mC.ClapTrap::getName();
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &mC)
+{
+	this->_name = mC.getName();
+	return (*this);
+}
+
+std::string DiamondTrap::getName() const
+{
+	return (this->_name);
 }
 
 void DiamondTrap::whoAmI()
