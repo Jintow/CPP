@@ -3,33 +3,26 @@
 //
 
 #include <iostream>
-#include "whatever.hpp"
+#include <vector>
+#include "easyfind.hpp"
 
 int main(void)
 {
-	int a = 21;
-	int b = 42;
+	std::vector<int> list;
 
-	std::cout << "Min of a and b is '" << min<int>(a,b) << "'" << std::endl; // explicit
-	std::cout << "Max of a and b is '" << max(a,b) << "'" << std::endl; // implicit
-	swap(a, b);
-	std::cout << "After swap, a is '" << a << "' and b is '" << b << "'" << std::endl;
-
-	float af = 10.002f;
-	float bf = 36.489;
-
-	std::cout << "Min of af and bf is '" << min<float>(af,bf) << "'" << std::endl; // explicit
-	std::cout << "Max of af and bf is '" << max(af,bf) << "'" << std::endl; // implicit
-	swap(af, bf);
-	std::cout << "After swap, af is '" << af << "' and bf is '" << bf << "'" << std::endl;
-
-	std::string s1 = "salut";
-	std::string s2 = "Iaorana";
-
-	std::cout << "Min of s1 and s2 is '" << min<std::string>((s1),(s2)) << "'" << std::endl; // explicit
-	std::cout << "Max of s1 and s2 is '" << max(s1,s2) << "'" << std::endl; // implicit
-	swap(s1, s2);
-	std::cout << "After swap, s1 is '" << s1 << "' and s2 is '" << s2 << "'" << std::endl;
-	// A elucider : l'appel aux fonction min, max, : si const est presente dans les focntions, seul l'appel avec le double
-	// deux points '::' fonctionne --> what?
+	for(int i=0; i <= 10; i++)
+	{
+		list.push_back(i);
+	}
+	try{
+		std::vector<int>::iterator search = easyfind<std::vector<int> >(list, 5);
+		std::cout << *search << std::endl;
+		search = easyfind<std::vector<int> >(list, 2);
+		std::cout << *search << std::endl;
+		search = easyfind<std::vector<int> >(list, 12);
+		std::cout << *search;
+	}
+	catch (std::exception &e){
+		std::cerr << "Error :" << e.what() << std::endl;
+	}
 }

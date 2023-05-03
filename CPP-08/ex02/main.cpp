@@ -3,45 +3,54 @@
 //
 
 #include <iostream>
-#include "Array.hpp"
+#include <list>
+#include "MutantStack.hpp"
 
-template <typename T>
-void mod_char(T &str)
+int main()
 {
-	for(size_t i = 0; i < str.length(); i++)
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << "Top value is : " << mstack.top() << std::endl;
+//	mstack.pop();
+	std::cout << "Stack size is : " << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
 	{
-		str[i] += 1;
+		std::cout << *it << std::endl;
+		++it;
 	}
-}
+	std::stack<int> s(mstack);
+	std::cout << std::endl << "   ==============      " <<std::endl <<std::endl;
+	std::list<int> lstack;
+	lstack.push_back(5);
+	lstack.push_back(17);
+	std::cout << "Top value is : " << lstack.front() << std::endl;
+//	mstack.pop();
+	std::cout << "Stack size is : " << lstack.size() << std::endl;
+	lstack.push_back(3);
+	lstack.push_back(5);
+	lstack.push_back(737);
+//[...]
+	lstack.push_back(0);
+	std::list<int>::iterator it2 = lstack.begin();
+	std::list<int>::iterator ite2 = lstack.end();
+	++it2;
+	--it2;
+	while (it2 != ite2)
+	{
+		std::cout << *it2 << std::endl;
+		++it2;
+	}
+//	std::stack<int> s2(lstack);
 
-template <typename T>
-void print_string(T &str)
-{
-	std::cout << str << " ";
-}
-
-int main(void)
-{
-	Array<std::string> yoyo;
-	Array<std::string> kourou(3);
-
-	kourou[0] = "coucou";
-	kourou[1] = "salut";
-	kourou[2] = "ca va?";
-	std::cout << kourou;
-
-	Array<std::string> copy = kourou;
-	Array<std::string> copy2(copy);
-	std::cout <<copy <<copy2;
-	std::cout <<yoyo;
-
-	Array<int> row(5);
-
-	row[0] = 0;
-	row[1] = 1;
-	row[2] = 2;
-	row[3] = 4;
-	row[4] = 5;
-
-	std::cout <<row;
+	return 0;
 }

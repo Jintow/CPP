@@ -6,12 +6,12 @@
 NAME			:= template
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= iter.hpp
+HEADERS_FILES	:= Span.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp
+SRC_FILES		:=	main.cpp Span.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)

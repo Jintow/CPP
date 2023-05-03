@@ -1,36 +1,31 @@
-//
-// Created by Johan Litaudon on 4/27/23.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/03 14:05:58 by jlitaudo          #+#    #+#             */
+/*   Updated: 2023/05/03 14:23:16 by jlitaudo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <iostream>
-#include "iter.hpp"
-
-template <typename T>
-void mod_char(T &str)
-{
-	for(size_t i = 0; i < str.length(); i++)
-	{
-		str[i] += 1;
-	}
-}
-
-template <typename T>
-void print_string(T &str)
-{
-	std::cout << str << " ";
-}
+#include "Span.hpp"
 
 int main(void)
 {
-	std::string array1[3] = {"salut ", "coucou ", "Iaorana "};
+	Span list(20);
 
-	iter<std::string>(array1, 3, print_string);
-	std::cout<<std::endl <<std::endl;
-	iter<std::string>(array1, 3,mod_char);
-	iter<std::string>(array1, 3, print_string);
-	std::cout<<std::endl << std::endl;
+	try{
+		for(int i = 0; i < 15; i++)
+			list.addNumber(i*i);
+		std::cout << "Shortest Span is : " << list.shortestSpan() << std::endl;
+		std::cout << "Longest Span is : " << list.longestSpan() << std::endl;
+	}
+	catch (std::exception &e){
+		std::cerr << e.what() <<std::endl;
+	}
 
-	int array2[4] = {1, 2, 21, -1};
-	iter<int>(array2, 4, print_string);
-	std::cout<<std::endl;
+	return (0);
 }

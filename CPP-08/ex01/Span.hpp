@@ -7,9 +7,11 @@
 
 #include <vector>
 #include <stdexcept>
+#include <algorithm>
 
 class Span {
 
+public:
 	Span(unsigned int N);
 	Span(const Span &src);
 	~Span();
@@ -17,6 +19,7 @@ class Span {
 	Span &operator=(const Span &src);
 
 	void			addNumber(int nb);
+	void			addRangeOfNumber(int range, int min, int max);
 	unsigned int	shortestSpan(void) const;
 	unsigned int	longestSpan(void) const;
 

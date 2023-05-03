@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 16:51:55 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/04/12 17:07:44 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:57:32 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int	main(void)
 {
 	try {
-		Bureaucrat Kufandy("Kufandy", 0);
-		Bureaucrat Swimmer("Swimmer", 151);
+		Bureaucrat Kufandy("Kufandy", 1);
+		Bureaucrat Swimmer("Swimmer", 150);
 //		Kufandy.promote();
 		Kufandy.demote();
 //		Swimmer.demote();

@@ -3,10 +3,10 @@
 #########################
 
 # Folders and names
-NAME			:= template
+NAME			:= Stack
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= Array.hpp
+HEADERS_FILES	:= MutantStack.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 

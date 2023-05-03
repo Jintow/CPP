@@ -3,7 +3,7 @@
 #########################
 
 # Folders and names
-NAME			:=	Caster
+NAME			:=	convert
 
 HEADERS_DIR		:= .
 HEADERS_FILES	:= Caster.hpp

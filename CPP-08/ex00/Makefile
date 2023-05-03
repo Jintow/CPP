@@ -6,7 +6,7 @@
 NAME			:= template
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= whatever.hpp
+HEADERS_FILES	:= easyfind.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 

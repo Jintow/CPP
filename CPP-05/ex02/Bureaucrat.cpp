@@ -10,12 +10,10 @@ Bureaucrat::Bureaucrat():_Name("Dupond"), _Grade(150)
 Bureaucrat::Bureaucrat(const std::string &name, int grade):_Name(name), _Grade(grade)
 {
 	if (this->_Grade > 150) {
-		this->_Grade = 150;
-		std::cout << "Grade fixed at 150 for Bureaucrat " << name << std::endl;
+		throw Exceptions::GradeTooLowException();
 	}
 	else if (this->_Grade < 1) {
-		this->_Grade = 1;
-		std::cout << "Grade fixed at 1 for Bureaucrat " << name << std::endl;
+		throw Exceptions::GradeTooHighException();
 	}
 }
 

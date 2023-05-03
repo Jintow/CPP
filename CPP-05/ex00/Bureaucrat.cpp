@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:18:10 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/05/03 10:18:10 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:56:32 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ Bureaucrat::Bureaucrat():_Name("Dupond"), _Grade(150)
 Bureaucrat::Bureaucrat(const std::string &name, int grade):_Name(name), _Grade(grade)
 {
 	if (this->_Grade > 150) {
-		this->_Grade = 150;
-		std::cout << "Grade fixed at 150 for Bureaucrat " << name << std::endl;
+		throw GradeTooLowException();
 	}
 	else if (this->_Grade < 1) {
-		this->_Grade = 1;
-		std::cout << "Grade fixed at 1 for Bureaucrat " << name << std::endl;
+		throw GradeTooHighException();
 	}
 }
 
