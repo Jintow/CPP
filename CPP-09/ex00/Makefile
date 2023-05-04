@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:= template
+NAME			:= Bitcoin
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= easyfind.hpp
+HEADERS_FILES	:= BitcoinExchange.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp
+SRC_FILES		:=	main.cpp BitcoinExchange.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
