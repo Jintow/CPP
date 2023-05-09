@@ -3,15 +3,15 @@
 #########################
 
 # Folders and names
-NAME			:= RPN
+NAME			:= PmergeMe
 
 HEADERS_DIR		:= .
-HEADERS_FILES	:= RPN.hpp
+HEADERS_FILES	:= PmergeMe.hpp
 
 HEADERS			:= $(addprefix $(HEADERS_DIR)/, $(HEADERS_FILES))
 
 SRC_DIR			:= .
-SRC_FILES		:=	main.cpp RPN.cpp
+SRC_FILES		:=	main.cpp PmergeMe.cpp
 
 BUILD_DIR		:=	build
 OBJS			:=	$(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
