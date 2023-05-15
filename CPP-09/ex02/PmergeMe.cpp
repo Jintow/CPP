@@ -32,7 +32,7 @@ PmergeMe::PmergeMe(char **argv)
 PmergeMe::~PmergeMe()
 {}
 
-bool PmergeMe::isAlphaStr(char *str)
+bool PmergeMe::isAlphaStr(char *str) const
 {
 	while (*str)
 	{
@@ -43,7 +43,7 @@ bool PmergeMe::isAlphaStr(char *str)
 	return (true);
 }
 
-void	PmergeMe::announce()
+void	PmergeMe::announce() const
 {
 //	std::vector<int>::iterator it = _vSort.begin();
 	for (unsigned long i = 0; i < _vSort.size(); i++)
@@ -53,173 +53,168 @@ void	PmergeMe::announce()
 	std::cout << std::endl;
 }
 
-void	PmergeMe::mergeSort(std::vector<int> array)
+void	PmergeMe::sort()
+{
+	struct timeval start_time, end_time;
+
+	gettimeofday(&start_time, NULL);
+	mergeSort(&_vSort);
+	gettimeofday(&end_time, NULL);
+	std::cout << "After:\t";
+	announce();
+	long elapsed_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 + end_time.tv_usec - start_time.tv_usec;
+	std::cout << "Time to process a range of " << _vSort.size() << " element with std::vector\t: " << elapsed_time << " microseconds." << std::endl;
+	gettimeofday(&start_time, NULL);
+	mergeSort(&_lSort);
+	gettimeofday(&end_time, NULL);
+	elapsed_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 + end_time.tv_usec - start_time.tv_usec;
+	std::cout << "Time to process a range of " << _lSort.size() << " element with std::list\t: " << elapsed_time << " microseconds." << std::endl;
+}
+
+void	PmergeMe::mergeSort(std::vector<int> *pArray)
 {
 	std::vector<int>	array_right;
 	std::vector<int>	array_left;
+	std::vector<int>	array = *pArray;
 	int 				mid;
 
-	if (array.size() > 64)
+	if (array.size() > 10)
 	{
 		mid = array.size() / 2;
-
+		for (int i = 0; i < mid; i++)
+			array_left.push_back(array[i]);
+		for(size_t i = mid; i < array.size(); i++)
+			array_right.push_back(array[i]);
+		mergeSort(&array_right);
+		mergeSort(&array_left);
+		mergeVector(*pArray, array_left, array_right);
 	}
+	else
+		insertVector(*pArray);
 }
 
-void	sort_merge(t_tab *tab)
+void PmergeMe::insertVector(std::vector<int> &array)
 {
-	size_t	mid;
-	t_tab	tab_g;
-	t_tab	tab_d;
-
-	if (tab->size > 1)
+	for(std::vector<int>::iterator it = array.begin(); it != array.end(); ++it)
 	{
-		mid = tab->size / 2;
-		tab_g.size = mid;
-		tab_g.tab = tab->tab;
-		tab_d.tab = &(tab->tab[mid]);
-		tab_d.size = tab->size - mid;
-		sort_merge(&tab_g);
-		sort_merge(&tab_d);
-		tab_g.tab = ft_intdup(tab_g.tab, tab_g.size);
-		if (!tab_g.tab)
-			exit_and_free(tab, NULL);
-		tab_d.tab = ft_intdup(tab_d.tab, tab_d.size);
-		if (!tab_d.tab)
-			exit_and_free(tab, tab_g.tab);
-		merge_tab(&tab_g, &tab_d, tab);
+		std::vector<int>::iterator jt = it - 1;
+		int temp = *it;
+		while (jt >= array.begin() && *jt > temp)
+			jt--;
+		array.erase(it);
+		array.insert(jt + 1, temp);
 	}
 }
 
-void	merge_tab(t_tab *tab_g, t_tab *tab_d, t_tab *tab_tot)
+void PmergeMe::mergeVector(std::vector<int> &array, std::vector<int> &array_left, std::vector<int> &array_right)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	size_t i = 0;
+	size_t j = 0;
+	size_t k = 0;
+	size_t sizeArrayLeft = array_left.size();
+	size_t sizeArrayRight = array_right.size();
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (i < tab_g->size && j < tab_d->size)
-	{
-		if (tab_g->tab[i] >= tab_d->tab[j])
-			tab_tot->tab[k++] = tab_g->tab[i++];
-		else
-			tab_tot->tab[k++] = tab_d->tab[j++];
-	}
-	while (j < tab_d->size)
-		tab_tot->tab[k++] = tab_d->tab[j++];
-	while (i < tab_g->size)
-		tab_tot->tab[k++] = tab_g->tab[i++];
-	free(tab_g->tab);
-	free(tab_d->tab);
-}
-
-void	exit_and_free(t_tab *tab, int *tab_temp)
-{
-	free(tab->tab);
-	free_tab(tab->str_tab);
-	if (tab_temp)
-		free(tab_temp);
-	exit (EXIT_FAILURE);
-}
-
-
-void insertionSort(vector<int>& vec, int start, int end) {
-	for (int i = start + 1; i <= end; i++) {
-		int key = vec[i];
-		int j = i - 1;
-		while (j >= start && vec[j] > key) {
-			j--;
-		}
-		vec.insert(vec.begin() + j + 1, key);
-		vec.erase(vec.begin() + i + 1);
-	}
-}
-
-void merge(vector<int>& vec, int start, int mid, int end) {
-	int len1 = mid - start + 1;
-	int len2 = end - mid;
-	vector<int> left(len1), right(len2);
-
-	for (int i = 0; i < len1; i++)
-		left[i] = vec[start + i];
-	for (int j = 0; j < len2; j++)
-		right[j] = vec[mid + 1 + j];
-
-	int i = 0, j = 0, k = start;
-	while (i < len1 && j < len2) {
-		if (left[i] <= right[j]) {
-			vec[k] = left[i];
+	while (i < sizeArrayLeft && j < sizeArrayRight) {
+		if (array_left[i] < array_right[j]) {
+			array[k] = array_left[i];
 			i++;
-		}
-		else {
-			vec[k] = right[j];
+		} else {
+			array[k] = array_right[j];
 			j++;
 		}
 		k++;
 	}
-
-	while (i < len1) {
-		vec[k] = left[i];
+	while (i < sizeArrayLeft) {
+		array[k] = array_left[i];
 		i++;
 		k++;
 	}
 
-	while (j < len2) {
-		vec[k] = right[j];
+	while (j < sizeArrayRight) {
+		array[k] = array_right[j];
 		j++;
 		k++;
 	}
 }
 
-// Fonction pour trier un vecteur par insertion
-void insertionSort(vector<int>& vec, int start, int end) {
-	for (int i = start + 1; i <= end; i++) {
-		int key = vec[i];
-		int j = i - 1;
-		while (j >= start && vec[j] > key) {
-			vec[j + 1] = vec[j];
-			j--;
+void	PmergeMe::mergeSort(std::list<int> *pList)
+{
+	std::list<int>				listRight;
+	std::list<int>				listLeft;
+	std::list<int>				list = *pList;
+	std::list<int>::iterator	listIt = list.begin();
+	int 						mid;
+
+	listIt = list.begin();
+	if (list.size() > 10)
+	{
+		mid = list.size() / 2;
+		for (int i = 0; i < mid; i++)
+		{
+			listLeft.push_back(*listIt);
+			listIt++;
 		}
-		vec[j + 1] = key;
+		while (listIt != list.end())
+		{
+			listRight.push_back(*listIt);
+			listIt++;
+		}
+		mergeSort(&listRight);
+		mergeSort(&listLeft);
+		mergeList(*pList, listLeft, listRight);
+	}
+	else
+		insertList(*pList);
+}
+
+void PmergeMe::insertList(std::list<int> &list)
+{
+	for (std::list<int>::iterator it = std::next(list.begin()); it != list.end(); ++it)
+	{
+		std::list<int>::iterator jt = std::prev(it);
+		int temp = *it;
+		while (jt != list.begin() && *jt > temp)
+		{
+			jt = std::prev(jt);
+		}
+		if (*jt > temp)
+		{
+			list.erase(it);
+			list.insert(list.begin(), temp);
+		}
+		else
+		{
+			list.erase(it);
+			list.insert(std::next(jt), temp);
+		}
 	}
 }
 
-// Fonction pour trier un vecteur par insertion-merge
-void insertionMergeSort(vector<int>& vec, int start, int end, int threshold) {
-	if (end - start + 1 <= threshold) {
-		insertionSort(vec, start, end);
+void PmergeMe::mergeList(std::list<int> &list, std::list<int> &listLeft, std::list<int> &listRight)
+{
+	std::list<int>::iterator listLeftIt = listLeft.begin();
+	std::list<int>::iterator listRightIt = listRight.begin();
+	std::list<int>::iterator listIt = list.begin();
+
+	while (listLeftIt != listLeft.end() && listRightIt != listRight.end()) {
+		if (*listLeftIt < *listRightIt) {
+			*listIt = *listLeftIt;
+			listLeftIt++;
+		} else {
+			*listIt = *listRightIt;
+			listRightIt++;
+		}
+		listIt++;
 	}
-	else {
-		int mid = start + (end - start) / 2;
-		insertionMergeSort(vec, start, mid, threshold);
-		insertionMergeSort(vec, mid + 1, end, threshold);
-		merge(vec, start, mid, end);
+	while (listLeftIt != listLeft.end()) {
+		*listIt = *listLeftIt;
+		listLeftIt++;
+		listIt++;
 	}
-}
 
-// Fonction pour afficher un vecteur
-void printVector(vector<int> vec) {
-	for (int i = 0; i < vec.size(); i++) {
-		cout << vec[i] << " ";
+	while (listRightIt !=listRight.end()) {
+		*listIt = *listRightIt;
+		listRightIt++;
+		listIt++;
 	}
-	cout << endl;
-}
-
-int main() {
-	// Exemple d'utilisation
-	vector<int> vec = { 10, 7, 8, 9, 1, 5 };
-	int n = vec.size();
-	int threshold = 5; // Seuil pour le tri par insertion
-
-	cout << "Vecteur non trié : ";
-	printVector(vec);
-
-	insertionMergeSort(vec, 0, n - 1, threshold);
-
-	cout << "Vecteur trié : ";
-	printVector(vec);
-
-	return 0;
 }

@@ -19,23 +19,29 @@
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+#include <sys/time.h>
+#include <iostream>
 
 class PmergeMe{
 public:
 	PmergeMe(char **argv);
 	~PmergeMe();
 
-	void 	announce();
-	void	mergeSort(std::vector<int> array);
-	void 	mergeSort(std::list<int> array);
-
+	void 	announce() const;
+	void 	sort();
+	void	mergeSort(std::vector<int> *pArray);
+	void	insertVector(std::vector<int> &array);
+	void	mergeVector(std::vector<int> &array, std::vector<int> &array_left, std::vector<int> &array_right);
+	void 	mergeSort(std::list<int> *pList);
+	void	insertList(std::list<int> &list);
+	void	mergeList(std::list<int> &array, std::list<int> &array_left, std::list<int> &array_right);
 
 
 private:
+
 	std::vector<int>	_vSort;
 	std::list<int>		_lSort;
-
-	bool isAlphaStr(char *str);
+	bool isAlphaStr(char *str) const;
 	PmergeMe();
 	PmergeMe(PmergeMe const & src);
 	PmergeMe &operator=(PmergeMe const & src);

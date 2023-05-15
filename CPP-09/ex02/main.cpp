@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
+
 	if (argc == 1)
 	{
 		std::cout << "Usage: ./PmergeMe [n1] [n2] ..." << std::endl;
@@ -23,10 +24,7 @@ int main(int argc, char **argv)
 		PmergeMe	sortedNumbers(&argv[1]);
 		std::cout << "Before:\t";
 		sortedNumbers.announce();
-		std::cout << "After:\t";
-		sortedNumbers.announce();
-		std::cout << "Time to process a range of " << argc << " element with std::vector\t:" << std::endl;
-		std::cout << "Time to process a range of " << argc << " element with std::list\t:" << std::endl;
+		sortedNumbers.sort();
 	}
 	catch (std::exception &e)
 	{
