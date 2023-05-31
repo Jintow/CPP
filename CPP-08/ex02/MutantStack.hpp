@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:25:40 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/05/03 15:31:20 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:08:40 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ public:
 
 	typedef typename std::stack<T>::container_type::iterator iterator;
 
-	iterator begin(void){
+	iterator begin(){
 		return (this->c.begin());
 	}
-	iterator end(void){
+	iterator end(){
 		return (this->c.end());
 	}
 };

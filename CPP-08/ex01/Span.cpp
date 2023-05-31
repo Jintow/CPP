@@ -38,10 +38,12 @@ unsigned int Span::shortestSpan() const
 		throw std::out_of_range("Span doesn't contain enough elements");
 	std::vector<int> temp = this->_list;
 	std::sort(temp.begin(), temp.end());
-	int min = temp[1] - temp[0];
+	unsigned int min = temp[1] - temp[0];
+	unsigned int tempDiff;
 	for (unsigned int i = 1; i < temp.size() - 2; i++)
 	{
-		if (temp[i + 1] - temp [i] < min)
+		tempDiff = temp[i + 1] - temp [i];
+		if (tempDiff < min)
 			min = temp[i + 1] - temp [i];
 	}
 	return (min);
@@ -56,22 +58,23 @@ unsigned int Span::longestSpan() const
 	return (temp[temp.size() - 1] - temp[0]);
 }
 
-//void Span::addRangeOfNumber(int range, int min, int max)
-//{
-//	if (_list.size() == _N)
-//		throw std::out_of_range("Span is full");
-//	unsigned int i = 0;
-//	unsigned int sizeLeft = _N - _list.size();
-//	if (max < min)
-//	{
-//		int temp = min;
-//		min = max;
-//		max = min;
-//	}
-//	while (sizeLeft - i > 0)
-//	{
-//		unsigned int diff = max - min;
-//		addNumber()
-//		i++;
-//	}
-//}
+void Span::addRangeOfNumber(unsigned int range, int min, int max)
+{
+	if (_list.size() == _N)
+		throw std::out_of_range("Span is full");
+	else if(_list.size() + range > _N)
+		throw std::out_of_range("Not enough space for this amount of numbers");
+	unsigned int i = 0;
+	if (max < min)
+	{
+		int temp = min;
+		min = max;
+		max = temp;
+	}
+	while (i < range)
+	{
+		unsigned int diff = max - min;
+		addNumber(min + diff / range * i);
+		i++;
+	}
+}
