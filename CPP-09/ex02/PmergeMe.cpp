@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlitaudo <jlitaudo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jlitaudo <jlitaudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:58:14 by jlitaudo          #+#    #+#             */
-/*   Updated: 2023/05/11 18:27:01 by jlitaudo         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:55:00 by jlitaudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ bool PmergeMe::isAlphaStr(char *str) const
 void	PmergeMe::announce() const
 {
 //	std::vector<int>::iterator it = _vSort.begin();
+//    std::list<int>::const_iterator it = _lSort.begin();
+//    while(it != _lSort.end())
+//    {
+//        std::cout << *it << " ";
+//        it++;
+//    }
 	for (unsigned long i = 0; i < _vSort.size(); i++)
 	{
 		std::cout << _vSort[i] << " " ;
@@ -61,14 +67,15 @@ void	PmergeMe::sort()
 	mergeSort(&_vSort);
 	gettimeofday(&end_time, NULL);
 	std::cout << "After:\t";
-	announce();
+    announce();
 	long elapsed_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 + end_time.tv_usec - start_time.tv_usec;
 	std::cout << "Time to process a range of " << _vSort.size() << " element with std::vector\t: " << elapsed_time << " microseconds." << std::endl;
 	gettimeofday(&start_time, NULL);
 	mergeSort(&_lSort);
+//    announce();
 	gettimeofday(&end_time, NULL);
 	elapsed_time = (end_time.tv_sec - start_time.tv_sec) * 1000000 + end_time.tv_usec - start_time.tv_usec;
-	std::cout << "Time to process a range of " << _lSort.size() << " element with std::list\t: " << elapsed_time << " microseconds." << std::endl;
+	std::cout << "Time to process a range of " << _lSort.size() << " element with std::list\t\t: " << elapsed_time << " microseconds." << std::endl;
 }
 
 void	PmergeMe::mergeSort(std::vector<int> *pArray)
@@ -78,7 +85,7 @@ void	PmergeMe::mergeSort(std::vector<int> *pArray)
 	std::vector<int>	array = *pArray;
 	int 				mid;
 
-	if (array.size() > 10)
+	if (array.size() > 300)
 	{
 		mid = array.size() / 2;
 		for (int i = 0; i < mid; i++)
@@ -146,7 +153,7 @@ void	PmergeMe::mergeSort(std::list<int> *pList)
 	int 						mid;
 
 	listIt = list.begin();
-	if (list.size() > 10)
+	if (list.size() > 300)
 	{
 		mid = list.size() / 2;
 		for (int i = 0; i < mid; i++)
@@ -164,28 +171,34 @@ void	PmergeMe::mergeSort(std::list<int> *pList)
 		mergeList(*pList, listLeft, listRight);
 	}
 	else
-		insertList(*pList);
+		insertList(pList);
 }
 
-void PmergeMe::insertList(std::list<int> &list)
+void PmergeMe::insertList(std::list<int> *list)
 {
-	for (std::list<int>::iterator it = std::next(list.begin()); it != list.end(); ++it)
+    std::list<int>::iterator it = (*list).begin();
+    if (it != (*list).end())
+        it++;
+    for (; it != (*list).end(); ++it)
 	{
-		std::list<int>::iterator jt = std::prev(it);
+		std::list<int>::iterator jt = it;
+        jt--;
 		int temp = *it;
-		while (jt != list.begin() && *jt > temp)
+		while (jt != (*list).begin() && *jt > temp)
 		{
-			jt = std::prev(jt);
+			jt--;
 		}
 		if (*jt > temp)
 		{
-			list.erase(it);
-			list.insert(list.begin(), temp);
+            (*list).erase(it);
+            (*list).insert((*list).begin(), temp);
 		}
 		else
 		{
-			list.erase(it);
-			list.insert(std::next(jt), temp);
+            (*list).erase(it);
+            jt++;
+            (*list).insert(jt, temp);
+            jt--;
 		}
 	}
 }

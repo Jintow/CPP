@@ -33,7 +33,7 @@ public:
 	void	insertVector(std::vector<int> &array);
 	void	mergeVector(std::vector<int> &array, std::vector<int> &array_left, std::vector<int> &array_right);
 	void 	mergeSort(std::list<int> *pList);
-	void	insertList(std::list<int> &list);
+	void	insertList(std::list<int> *list);
 	void	mergeList(std::list<int> &array, std::list<int> &array_left, std::list<int> &array_right);
 
 
